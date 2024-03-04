@@ -20,7 +20,7 @@ class PokemonSetController extends Controller
     public function getSet(string $name)
     {
 
-        $cardList = Pokemon::Card()->where(['set.name' => 'generations'])->all();
+        $cardList = Pokemon::Card()->where(['set.name' => $name])->all();
 
         return view('pokemon-card-list', [
             'cardList' => $cardList
