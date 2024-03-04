@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Pokemon\Models\Set;
+use Pokemon\Pokemon;
+
+class PokemonSetController extends Controller
+{
+
+    public function setList()
+    {
+        /** @var Set $list */
+        $list = Pokemon::Set()->all();
+
+        return view('PokemonSetList', [
+            'pokemonSetsList' => $list
+        ]);
+    }
+    public function getSet(string $name)
+    {
+
+        $cardList = Pokemon::Card()->where(['set.name' => 'generations'])->all();
+
+        return view('pokemon-card-list', [
+            'cardList' => $cardList
+        ]);
+    }
+}
