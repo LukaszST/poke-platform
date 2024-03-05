@@ -36,6 +36,18 @@
                             class="absolute bottom-0 left-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
                             {{$card->getName()}}
                         </div>
+                        <div class="absolute bottom-0 right-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
+                            @if (Route::has('login'))
+                                @auth
+                                    <add-card-to-collection  :id="{{$card->getId()}}" />
+                                    <button>Add to collection</button>
+                                @else
+                                    Login or register to add to collection
+
+                                @endauth
+                            @endif
+
+                        </div>
                     </a>
 
                     <a href="!#">
