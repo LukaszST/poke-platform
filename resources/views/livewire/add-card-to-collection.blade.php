@@ -1,4 +1,4 @@
-<div>
-    {{ $cardId }}
-<button wire:click="addToCollection" value="$id">Add to collection</button>
-</div>
+ <div>
+     {{ $cardId }}
+     <button wire:click="addToCollection('{{$cardId}}')" value="$id">Add to collection</button>
+ </div>

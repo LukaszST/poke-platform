@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PokemonSetController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\AddCardToCollection;
 use Illuminate\Support\Facades\Route;
 
 /*

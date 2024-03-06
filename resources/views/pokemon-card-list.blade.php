@@ -9,17 +9,17 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
 
     <!-- Styles -->
     {{--    TODO install from npm--}}
     <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
 <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
     <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-
-@foreach($cardList as $card)
+        @foreach($cardList as $card)
             <div class="rounded overflow-hidden shadow-lg">
                 <a href="#"></a>
                 <div class="relative">
@@ -36,11 +36,12 @@
                             class="absolute bottom-0 left-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
                             {{$card->getName()}}
                         </div>
-                        <div class="absolute bottom-0 right-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
+                        <div
+                            class="absolute bottom-0 right-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
                             @if (Route::has('login'))
                                 @auth
-                                    <livewire:add-card-to-collection  :card-id="$card->getId()" />
-{{--                                    <button>Add to collection</button>--}}
+
+                                    @livewire('add-card-to-collection', ['cardId' => $card->getId()])
                                 @else
                                     Login or register to add to collection
 
@@ -59,11 +60,11 @@
                     </a>
                 </div>
 
-@endforeach
-
-
-
+            </div>
+        @endforeach
     </div>
 </div>
 
+
 </body>
+</html>
