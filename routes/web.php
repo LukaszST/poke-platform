@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyCollections;
 use App\Http\Controllers\PokemonSetController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\AddCardToCollection;
@@ -32,5 +33,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/set/{name}', [PokemonSetController::class, 'getSet']);
 Route::get('/sets', [PokemonSetController::class, 'setList']);
+
+Route::get('/my-collections', [MyCollections::class, 'getMyCardCollection'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
