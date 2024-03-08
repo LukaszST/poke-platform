@@ -7,8 +7,9 @@ Poke Platform will be web application to track prices and your collection with P
 
 ## Planned functionality
 - [x] Login and registration
-- [ ] List my collection of cards
-- [x] Adding and removing card from my collection
+- [x] List my collection of cards
+- [x] Adding card from my collection
+- [x] Removing  card from my collection
 - [x] Integration with https://pokemontcg.io/ 
 - [ ] CRUD or other mechanism to update prices
 - [ ] Storing locally data from API
