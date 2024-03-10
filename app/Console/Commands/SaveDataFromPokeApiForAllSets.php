@@ -28,7 +28,7 @@ class SaveDataFromPokeApiForAllSets extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): bool
     {
         /** @var Set $list */
         $list = Pokemon::Set()->all();
@@ -43,6 +43,8 @@ class SaveDataFromPokeApiForAllSets extends Command
                 );
             }
         }
+
+        return true;
     }
 
     /**

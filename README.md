@@ -13,6 +13,9 @@ Poke Platform will be web application to track prices and your collection with P
 - [x] Integration with https://pokemontcg.io/ 
 - [ ] CRUD or other mechanism to update prices
 - [ ] Storing locally data from API
+  - [x] Storing data for cards
+    - [ ] Add information about set to easier search
+  - [ ] Storing data for sets
 
 ## #100commitow
 
