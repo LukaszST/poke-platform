@@ -3,21 +3,19 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Statement;
 use Pokemon\Models\Card;
 use Pokemon\Models\Set;
 use Pokemon\Pokemon;
 
-class SaveDataFromPokeApiForAllSets extends Command
+class UpdatePricesCardMarket extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:save-data-from-poke-api-for-all-sets';
+    protected $signature = 'app:update-prices-card-market';
 
     /**
      * The console command description.
@@ -29,7 +27,7 @@ class SaveDataFromPokeApiForAllSets extends Command
     /**
      * Execute the console command.
      */
-    public function handle(): bool
+    public function handle()
     {
         /** @var Set $list */
         $list = Pokemon::Set()->all();
@@ -45,8 +43,6 @@ class SaveDataFromPokeApiForAllSets extends Command
                 );
             }
         }
-
-        return true;
     }
 
     /**
@@ -63,18 +59,17 @@ class SaveDataFromPokeApiForAllSets extends Command
 
     private function saveToDbCardInfo(
         string $cardId,
-        string $cardName,
-        string $setName,
-        ?string $largeImage,
-        ?string $smallImage
+        float $averageSellPrice,
+        float $lowPrice,
+        float $trendPrice,
+        float $suggestedPrice
     ): void {
-        //TODO add saving image to local resources
-        DB::table('card_list_basic_info')->where('card_id', '==', $cardId)->updateOrInsert([
+        DB::table('card_market_prices')->insert([
             "card_id" => $cardId,
-            "card_name" => $cardName,
-            "set_name" => $setName,
-            "image_url_big" => $largeImage,
-            "image_url_small" => $smallImage,
+            'average_sell_price' => $averageSellPrice,
+            'low_price' => $lowPrice,
+            'trend_price' => $trendPrice,
+            'suggested_price' => $suggestedPrice,
             "created_at" => now(),
             "updated_at" => now()
         ]);

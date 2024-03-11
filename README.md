@@ -11,12 +11,14 @@ Poke Platform will be web application to track prices and your collection with P
 - [x] Adding card from my collection
 - [x] Removing  card from my collection
 - [x] Integration with https://pokemontcg.io/ 
-- [ ] CRUD or other mechanism to update prices
-- [ ] Storing locally data from API
+- [x] ~~CRUD or other~~ Command to update prices and save to DB
+- [x] Storing locally data from API
   - [x] Storing data for cards
-    - [ ] Add information about set to easier search
-  - [ ] Storing data for sets
-
+    - [x] Add information about set to easier search
+  - [x] Storing data for sets
+- [ ] Saving images from API
+- [ ] Trade card with other with secure approve
+ 
 ## #100commitow
 
 I want to create fast MVP with a lot of mistakes and bad decisions and after working web application make refactor. Using techniques patterns, and guides from Refactoring books.
@@ -29,3 +31,4 @@ Let's play a game about writting bad code and then fixing it and learning a lot.
 - [ ] God object user
 - [ ] everything its connected together
 - [ ] DB Queries from all places
+- [ ] Third party classes in all places in project
