@@ -30,8 +30,20 @@ class SavePhotosForCards extends Command
         $cards = DB::table('card_list_basic_info')->get();
 
         foreach ($cards as $card) {
-            $imageContent = file_get_contents($card->image_url_small);
-            File::put( public_path( 'cards/' . $card->card_id . '.png'), $imageContent);
+            try {
+                $imageContent = file_get_contents($card->image_url_small);
+                File::put( public_path( 'cards/' . $card->card_id . '.png'), $imageContent);
+
+            } catch (\Exception $exception) {
+                echo 'failed small ' . $card->id . PHP_EOL;
+                try {
+                    $imageContent = file_get_contents($card->image_url_big);
+                    File::put( public_path( 'cards/' . $card->card_id . '.png'), $imageContent);
+                } catch (\Exception $exception) {
+                    echo 'failed big ' . $card->id . PHP_EOL;
+
+                }
+            }
         }
     }
 }
