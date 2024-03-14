@@ -16,8 +16,9 @@ Poke Platform will be web application to track prices and your collection with P
   - [x] Storing data for cards
     - [x] Add information about set to easier search
   - [x] Storing data for sets
-- [ ] Saving images from API
+- [x] Saving images from API
 - [ ] Trade card with other with secure approve
+- [ ] Showing historical prices for cards
  
 ## #100commitow
 
