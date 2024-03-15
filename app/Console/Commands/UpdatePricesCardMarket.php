@@ -36,11 +36,13 @@ class UpdatePricesCardMarket extends Command
             foreach ($this->getSetByName($set->getName()) as $card) {
                 $this->saveToDbCardInfo(
                     $card->getId(),
-                    $card->getName(),
-                    $card->getSet()->getName(),
-                    $card->getImages()->getLarge(),
-                    $card->getImages()->getSmall()
+                    $card->getCardmarket()->getPrices()->getAverageSellPrice(),
+                    $card->getCardmarket()->getPrices()->getLowPrice(),
+                    $card->getCardmarket()->getPrices()->getTrendPrice(),
+                    $card->getCardmarket()->getPrices()->getSuggestedPrice()
                 );
+
+                $this->line('Prices for: ' . $card->getName() . ' from set ' . $card->getSet()->getName() . ' was added');
             }
         }
     }
