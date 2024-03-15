@@ -37,4 +37,7 @@ Route::get('/sets', [PokemonSetController::class, 'setList']);
 Route::get('/my-collections', [MyCollections::class, 'getMyCardCollection'])
     ->middleware(['auth', 'verified']);
 
+Route::get('/prices/{name}', [\App\Http\Controllers\PriceController::class, 'showPriceForCard']);
+
+
 require __DIR__.'/auth.php';
