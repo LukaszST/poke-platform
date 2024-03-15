@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Exception;
 use Pokemon\Models\Card;
 use Pokemon\Models\Set;
 use Pokemon\Pokemon;
@@ -36,6 +35,13 @@ class UpdatePricesCardMarket extends Command
         foreach ($list as $set) {
             foreach ($this->getSetByName($set->getName()) as $card) {
                 try {
+                    $cardMarket = $card->getCardmarket();
+
+                    if (is_null($cardMarket)) {
+                        $this->error('card market empty for ' . $card->getId(). ' and card name ' . $card->getName());
+                        break;
+                    }
+
                     $this->saveToDbCardInfo(
                         $card->getId(),
                         $card->getCardmarket()->getPrices()->getAverageSellPrice(),
