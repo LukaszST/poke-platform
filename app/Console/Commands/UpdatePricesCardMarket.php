@@ -22,7 +22,7 @@ class UpdatePricesCardMarket extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Updates prices for card market provider from Pokemon tcg api';
 
     /**
      * Execute the console command.
