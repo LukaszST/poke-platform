@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Pokemon\Models\Card;
 
 class SavePhotosForCards extends Command
 {
@@ -34,14 +35,17 @@ class SavePhotosForCards extends Command
                 $imageContent = file_get_contents($card->image_url_small);
                 File::put( public_path( 'cards/' . $card->card_id . '.png'), $imageContent);
 
+                $this->info('Photo saved for ' . $card->card_name);
             } catch (\Exception $exception) {
-                echo 'failed small ' . $card->id . PHP_EOL;
+                $this->warn('failed small for card id ' . $card->card_id);
+
                 try {
                     $imageContent = file_get_contents($card->image_url_big);
                     File::put( public_path( 'cards/' . $card->card_id . '.png'), $imageContent);
-                } catch (\Exception $exception) {
-                    echo 'failed big ' . $card->id . PHP_EOL;
 
+                    $this->info('Photo saved for ' . $card->card_name);
+                } catch (\Exception $exception) {
+                    $this->error('error for ' . $card->card_id);
                 }
             }
         }
