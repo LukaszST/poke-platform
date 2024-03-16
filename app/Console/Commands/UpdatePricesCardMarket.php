@@ -42,6 +42,11 @@ class UpdatePricesCardMarket extends Command
                         break;
                     }
 
+                    if (is_null($cardMarket->getPrices())) {
+                        $this->error('card market prices empty for ' . $card->getId(). ' and card name ' . $card->getName());
+                        break;
+                    }
+
                     $this->saveToDbCardInfo(
                         $card->getId(),
                         $card->getCardmarket()->getPrices()->getAverageSellPrice(),
