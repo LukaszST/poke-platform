@@ -21,7 +21,7 @@ class SaveDataForSetInDbFromApi extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Save basic set info in database';
 
     /**
      * Execute the console command.

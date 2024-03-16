@@ -24,7 +24,7 @@ class SaveDataFromPokeApiForAllSets extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Save basic info about card to db';
 
     /**
      * Execute the console command.
@@ -68,7 +68,6 @@ class SaveDataFromPokeApiForAllSets extends Command
         ?string $largeImage,
         ?string $smallImage
     ): void {
-        //TODO add saving image to local resources
         DB::table('card_list_basic_info')->where('card_id', '==', $cardId)->updateOrInsert([
             "card_id" => $cardId,
             "card_name" => $cardName,
