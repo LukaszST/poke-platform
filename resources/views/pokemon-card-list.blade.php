@@ -24,10 +24,19 @@
                 <a href="#"></a>
                 <div class="relative">
                     <a href="#">
-                        <img class="w-full"
-                             src="{{$card->getImages()->getSmall()}}"
-                             alt="">
-                        <div
+
+                        @if(asset('cards/' . $card->getId() . '.png'))
+                            <img class="w-full"
+                                 src="{{asset('cards/' . $card->getId() . '.png')}}"
+                                 alt="">
+                            <div
+                        @else
+                            <img class="w-full"
+                                 src="{{$card->getImages()->getSmall()}}"
+                                 alt="">
+                            <div
+                        @endif
+
                             class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
                         </div>
                     </a>
