@@ -20,7 +20,7 @@ class SavePhotosForCards extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Save photos for pokemon cards local public directory';
 
     /**
      * Execute the console command.
