@@ -17,8 +17,39 @@ class PriceController extends Controller
             'created_at'
         ]);
 
-        return view('CardPriceChart', [
-            'prices' => $prices
+        $labels = DB::table('card_market_prices')->where('card_id', '=', $cardId)->get([
+            'created_at'
         ]);
+
+        $labelsFlat = $this->flatLabels($labels->all());
+
+        $trendPrices = $this->flatPrices($prices->toArray(), '');
+
+        return view('CardPriceChart', [
+            'labels' => $labelsFlat,
+            'prices' => $trendPrices
+        ]);
+    }
+
+    private function flatLabels(array $labels)
+    {
+        $return = [];
+
+        foreach ($labels as $label) {
+            $return[] = $label->created_at;
+        }
+
+        return $return;
+    }
+
+    private function flatPrices(array $labels, string $priceType)
+    {
+        $return = [];
+
+        foreach ($labels as $label) {
+            $return[] = $label->average_sell_price;
+        }
+
+        return $return;
     }
 }
