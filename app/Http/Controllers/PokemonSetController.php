@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Pokemon\Models\Set;
 use Pokemon\Pokemon;
 
 class PokemonSetController extends Controller
 {
-
     public function setList()
     {
         /** @var Set $list */
