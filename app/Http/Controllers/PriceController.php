@@ -17,37 +17,30 @@ class PriceController extends Controller
             'created_at'
         ]);
 
-        $labels = DB::table('card_market_prices')->where('card_id', '=', $cardId)->get([
-            'created_at'
-        ]);
+        $labelsFlat = $this->flatResults($prices->toArray(), 'created_at');
 
-        $labelsFlat = $this->flatLabels($labels->all());
-
-        $trendPrices = $this->flatPrices($prices->toArray(), '');
+        $averageSellPrice = $this->flatResults($prices->toArray(), 'average_sell_price');
+        $lowPrice = $this->flatResults($prices->toArray(), 'low_price');
+        $trendPrice = $this->flatResults($prices->toArray(), 'trend_price');
+        $suggestedPrice = $this->flatResults($prices->toArray(), 'suggested_price');
 
         return view('CardPriceChart', [
             'labels' => $labelsFlat,
-            'prices' => $trendPrices
+            'avgSellPrice' => $averageSellPrice,
+            'lowPrice' => $lowPrice,
+            'trendPrice' => $trendPrice,
+            'suggestedPrice' => $suggestedPrice
         ]);
     }
 
-    private function flatLabels(array $labels)
+    private function flatResults(array $labels, string $priceType)
     {
         $return = [];
 
         foreach ($labels as $label) {
-            $return[] = $label->created_at;
-        }
+            $label = get_object_vars($label);
 
-        return $return;
-    }
-
-    private function flatPrices(array $labels, string $priceType)
-    {
-        $return = [];
-
-        foreach ($labels as $label) {
-            $return[] = $label->average_sell_price;
+            $return[] = $label[$priceType];
         }
 
         return $return;

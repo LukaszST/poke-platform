@@ -6,7 +6,10 @@
 
 <body>
 <h1>WIP</h1>
-<canvas id="myChart" height="100px"></canvas>
+<canvas id="myChartAvgSellPrice" height="50px"></canvas>
+<canvas id="myChartLowPrice" height="50px"></canvas>
+<canvas id="myChartTrendPrice" height="50px"></canvas>
+<canvas id="myChartSuggestedPrice" height="50px"></canvas>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
@@ -15,27 +18,93 @@
 <script type="text/javascript">
 
     var labels =  {{ Js::from($labels) }};
-    var users =  {{ Js::from($prices) }};
+    var averageSellPrice =  {{ Js::from($avgSellPrice) }};
+    var lowPrice =  {{ Js::from($lowPrice) }};
+    var trendPrice =  {{ Js::from($trendPrice) }};
+    var suggestedPrice =  {{ Js::from($suggestedPrice) }};
 
-    const data = {
+    const dataAvgSellPrice = {
         labels: labels,
         datasets: [{
-            label: 'WIP',
+            label: 'Average Sell Price',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: users,
+            data: averageSellPrice,
         }]
     };
 
-    const config = {
+    const configAvgSellPrice = {
         type: 'line',
-        data: data,
+        data: dataAvgSellPrice,
         options: {}
     };
 
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
+    const myChartAvgSellPrice = new Chart(
+        document.getElementById('myChartAvgSellPrice'),
+        configAvgSellPrice
+    );
+
+    const dataLowPrice = {
+        labels: labels,
+        datasets: [{
+            label: 'Low Price',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: lowPrice,
+        }]
+    };
+
+    const configLowPrice = {
+        type: 'line',
+        data: dataLowPrice,
+        options: {}
+    };
+
+    const myChartLowPrice = new Chart(
+        document.getElementById('myChartLowPrice'),
+        configLowPrice
+    );
+
+    const dataTrendPrice = {
+        labels: labels,
+        datasets: [{
+            label: 'Trend Price',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: trendPrice,
+        }]
+    };
+
+    const configTrendPrice = {
+        type: 'line',
+        data: dataTrendPrice,
+        options: {}
+    };
+
+    const myChartTrendPrice = new Chart(
+        document.getElementById('myChartTrendPrice'),
+        configTrendPrice
+    );
+
+    const dataSuggestedPrice = {
+        labels: labels,
+        datasets: [{
+            label: 'Suggested Price',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: suggestedPrice,
+        }]
+    };
+
+    const configSuggestedPrice = {
+        type: 'line',
+        data: dataSuggestedPrice,
+        options: {}
+    };
+
+    const myChartSuggestedPrice = new Chart(
+        document.getElementById('myChartSuggestedPrice'),
+        configSuggestedPrice
     );
 
 </script>
