@@ -17,7 +17,10 @@
 
 </head>
 <body>
+
 <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+    <canvas id="myChartTrendPrice" height="50px"></canvas>
+
     <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
         @foreach($cardList as $key => $card)
             <div class="rounded overflow-hidden shadow-lg">
@@ -63,7 +66,37 @@
         @endforeach
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+<script type="text/javascript">
+
+    var labels =  {{ Js::from($labels) }};
+    var trendPrice =  {{ Js::from($trendPrice) }};
+
+
+    const dataTrendPrice = {
+        labels: labels,
+        datasets: [{
+            label: 'Trend Price',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: trendPrice,
+        }]
+    };
+
+    const configTrendPrice = {
+        type: 'line',
+        data: dataTrendPrice,
+        options: {}
+    };
+
+    const myChartTrendPrice = new Chart(
+        document.getElementById('myChartTrendPrice'),
+        configTrendPrice
+    );
+</script>
 
 </body>
 </html>

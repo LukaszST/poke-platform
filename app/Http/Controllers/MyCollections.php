@@ -18,8 +18,35 @@ class MyCollections extends Controller
             $cardList[$card->id] = Pokemon::Card()->find($card->card_id);
         }
 
+        $cardPriceInCollection = [];
+
+        foreach ($cards as $card) {
+            $prices = DB::table('card_market_prices')->where('card_id', '=', $card->card_id)->get([
+                'card_id',
+                'average_sell_price',
+                'low_price',
+                'trend_price',
+                'suggested_price',
+                'created_at'
+            ]);
+
+            foreach ($prices->toArray() as $cardPrice) {
+                $cardPrice = get_object_vars($cardPrice);
+
+                if (isset($cardPriceInCollection[date("d-m-Y", strtotime($cardPrice['created_at']))])) {
+                    $cardPriceInCollection[date("d-m-Y", strtotime($cardPrice['created_at']))] += $cardPrice['trend_price'];
+                } else {
+                    $cardPriceInCollection[date("d-m-Y", strtotime($cardPrice['created_at']))] = $cardPrice['trend_price'];
+                }
+            }
+        }
+
+//        dd($cardPriceInCollection);
+
         return view('my-collections', [
-            'cardList' => $cardList
+            'cardList' => $cardList,
+            'labels' => array_keys($cardPriceInCollection),
+            'trendPrice' => $cardPriceInCollection
         ]);
     }
 }
