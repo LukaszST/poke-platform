@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GetAllCardsFromAllSetsForPokemon;
 use App\Http\Controllers\MyCollections;
 use App\Http\Controllers\PokemonSetController;
 use App\Http\Controllers\PriceController;
@@ -39,6 +40,8 @@ Route::get('/my-collections', [MyCollections::class, 'getMyCardCollection'])
     ->middleware(['auth', 'verified']);
 
 Route::get('/prices/{name}', [PriceController::class, 'showPriceForCard']);
+
+Route::get('/card/{pokemonName}', [GetAllCardsFromAllSetsForPokemon::class, 'getAllCardsForPokemon']);
 
 
 require __DIR__.'/auth.php';

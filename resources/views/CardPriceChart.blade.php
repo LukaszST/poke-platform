@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>WIP</title>
+    <title>Card Price for</title>
 </head>
 
 <body>
-<h1>WIP</h1>
+<h1>Card Price for </h1>
 <canvas id="myChartAvgSellPrice" height="50px"></canvas>
 <canvas id="myChartLowPrice" height="50px"></canvas>
 <canvas id="myChartTrendPrice" height="50px"></canvas>
