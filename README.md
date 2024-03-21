@@ -28,9 +28,9 @@ I want to create fast MVP with a lot of mistakes and bad decisions and after wor
 ## First Ideas how to write bad application
 
 Let's play a game about writting bad code and then fixing it and learning a lot.
-- [ ] Logic in controller
-- [ ] Logic in views
+- [x] Logic in controller
+- [x] Logic in views
 - [ ] God object user
 - [ ] everything its connected together
-- [ ] DB Queries from all places
-- [ ] Third party classes in all places in project
+- [x] DB Queries from all places
+- [x] Third party classes in all places in project
