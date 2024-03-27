@@ -41,7 +41,7 @@ Route::get('/my-collections', [MyCollections::class, 'getMyCardCollection'])
 
 Route::get('/prices/{name}', [PriceController::class, 'showPriceForCard']);
 
-Route::get('/card/{pokemonName}', [GetAllCardsFromAllSetsForPokemon::class, 'getAllCardsForPokemon']);
+Route::get('/card/{pokemonName}', [GetAllCardsFromAllSetsForPokemon::class, 'getAllCardsForPokemon'])->name('card.search');
 
 
 require __DIR__.'/auth.php';
