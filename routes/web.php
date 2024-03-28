@@ -5,6 +5,7 @@ use App\Http\Controllers\MyCollections;
 use App\Http\Controllers\PokemonSetController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TradeCard;
 use App\Livewire\AddCardToCollection;
 use Illuminate\Support\Facades\Route;
 
@@ -43,5 +44,6 @@ Route::get('/prices/{name}', [PriceController::class, 'showPriceForCard']);
 
 Route::get('/card/{pokemonName}', [GetAllCardsFromAllSetsForPokemon::class, 'getAllCardsForPokemon'])->name('card.search');
 
+Route::get('trade', [TradeCard::class, 'listCardsOpenForTrade']);
 
 require __DIR__.'/auth.php';
