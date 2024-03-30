@@ -5,6 +5,24 @@
 
 Poke Platform will be web application to track prices and your collection with Pokemon cards and product. 
 
+## How to run
+1. Run to get vendor directory
+```shell
+docker run --rm --interactive --tty -v $(pwd):/app composer install
+```
+2. Copy `.`env.examle`` to ``.env``
+3. The run by Laravel sail
+```shell
+vendor/bin/sail up -d
+```
+3. Go to ``localhost``
+4. Clock on generate app key
+
+## Functionality documentation
+
+1. WIP
+
+
 ## Planned functionality
 - [x] Login and registration
 - [x] List my collection of cards
