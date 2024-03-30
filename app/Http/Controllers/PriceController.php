@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Pokemon\Pokemon;
 
 class PriceController extends Controller
 {
@@ -17,6 +18,8 @@ class PriceController extends Controller
             'created_at'
         ]);
 
+        $cardData = Pokemon::Card()->find($cardId);
+
         $labelsFlat = $this->flatResults($prices->toArray(), 'created_at');
 
         $averageSellPrice = $this->flatResults($prices->toArray(), 'average_sell_price');
@@ -25,6 +28,7 @@ class PriceController extends Controller
         $suggestedPrice = $this->flatResults($prices->toArray(), 'suggested_price');
 
         return view('CardPriceChart', [
+            'cardData' => $cardData,
             'labels' => $labelsFlat,
             'avgSellPrice' => $averageSellPrice,
             'lowPrice' => $lowPrice,
