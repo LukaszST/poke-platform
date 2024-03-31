@@ -12,6 +12,8 @@ class OpenTradeWizard extends Component
     public array $cards;
 
     public ?string $img = null;
+
+    public string $card;
     public function __construct()
     {
         $userId = auth()->getUser()->getQueueableId();
@@ -33,5 +35,10 @@ class OpenTradeWizard extends Component
     public function render()
     {
         return view('livewire.open-trade-wizard');
+    }
+
+    public function selectCard(string $card)
+    {
+
     }
 }
