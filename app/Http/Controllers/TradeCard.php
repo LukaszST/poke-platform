@@ -15,4 +15,9 @@ class TradeCard extends Controller
             'openTrades' => $openTrades
         ]);
     }
+
+    public function addTOpenTrade()
+    {
+        return view('AddOpenTrade');
+    }
 }

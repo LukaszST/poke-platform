@@ -45,5 +45,6 @@ Route::get('/prices/{name}', [PriceController::class, 'showPriceForCard']);
 Route::get('/card/{pokemonName}', [GetAllCardsFromAllSetsForPokemon::class, 'getAllCardsForPokemon'])->name('card.search');
 
 Route::get('trade', [TradeCard::class, 'listCardsOpenForTrade']);
+Route::get('trade/new', [TradeCard::class, 'addTOpenTrade']);
 
 require __DIR__.'/auth.php';
