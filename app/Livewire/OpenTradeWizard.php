@@ -81,7 +81,7 @@ class OpenTradeWizard extends Component
         /** @var Card $cardInfo */
         $cardInfo = Pokemon::Card()->find($value);
 
-        $this->wantedCard = $cardInfo->getImages()->getSmall();
+        $this->wantedImg = $cardInfo->getImages()->getSmall();
     }
 
     private function prepareCardForSelect(Card $card): string
