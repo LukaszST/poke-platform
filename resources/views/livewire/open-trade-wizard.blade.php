@@ -67,13 +67,13 @@
                     </div>
 
                     <div class="sm:col-span-2">
-                        @if(!is_null($img))
+                        @if(!is_null($wantedImg))
                             <div class="rounded overflow-hidden shadow-lg">
                                 <a href="#"></a>
                                 <div class="relative">
                                     <a href="#">
                                         <img class="w-full"
-                                             src="{{$img}}"
+                                             src="{{$wantedImg}}"
                                              alt="">
                                         <div
                                             class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
