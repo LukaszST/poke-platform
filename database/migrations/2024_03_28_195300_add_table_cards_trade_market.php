@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('card_id_for_trade');
             $table->string('trade_owner');
             $table->string('wanted_card_id');
-            $table->string('real_image_card_front');
-            $table->string('real_image_card_back');
-            $table->string('short_note');
+            $table->string('real_image_card_front')->nullable()->default(null);
+            $table->string('real_image_card_back')->nullable()->default(null);
+            $table->string('short_note')->nullable()->default(null);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

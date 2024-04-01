@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('trade_id');
             $table->string('bid_owner');
-            $table->string('real_image_card_front')->nullable();
-            $table->string('real_image_card_back')->nullable();
+            $table->string('real_image_card_front')->nullable()->default(null);
+            $table->string('real_image_card_back')->nullable()->default(null);
             $table->string('short_note')->nullable();
             $table->boolean('trade_win_id')->default(false);
             $table->timestamps();

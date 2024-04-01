@@ -18,6 +18,24 @@
                         </div>
                     </div>
 
+                    <div class="sm:col-span-2">
+                        @if(!is_null($img))
+                            <div class="rounded overflow-hidden shadow-lg">
+                                <a href="#"></a>
+                                <div class="relative">
+                                    <a href="#">
+                                        <img class="w-full"
+                                             src="{{$img}}"
+                                             alt="">
+                                        <div
+                                            class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="col-span-full">
                         <label for="about" class="block text-sm font-medium leading-6 text-gray-900">About</label>
                         <div class="mt-2">
@@ -25,54 +43,6 @@
                         </div>
                         <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
                     </div>
-
-                    @if(!is_null($img))
-                        <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-                                <div class="rounded overflow-hidden shadow-lg">
-                                    <a href="#"></a>
-                                    <div class="relative">
-                                        <a href="#">
-                                            <img class="w-full"
-                                                 src="{{$img}}"
-                                                 alt="">
-                                            <div
-                                                class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
-                                            </div>
-                                        </a>
-                                        <a href="#!">
-                                            <div
-                                                class="absolute bottom-0 left-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                                                {{$card->getName()}}
-                                            </div>
-                                            <div
-                                                class="absolute bottom-0 right-0 bg-indigo-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                                                @if (Route::has('login'))
-                                                    @auth
-
-                                                        @livewire('remove-card-from-collection', ['id' => $key])
-                                                    @else
-                                                        Login or register to add to collection
-
-                                                    @endauth
-                                                @endif
-
-                                            </div>
-                                        </a>
-
-                                        <a href="!#">
-                                            <div
-                                                class="text-sm absolute top-0 right-0 bg-indigo-600 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                                                <span class="font-bold">{{$card->getCardmarket()->getPrices()->getTrendPrice()}}</span>
-                                                <small>CM Trend Price</small>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <a href="/prices/{{$card->getId()}}">Check prices for {{$card->getName()}}</a>
-                                </div>
-                        </div>
-                </div>
-
-                    @endif
 
                     <div class="col-span-full">
                         <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Photo</label>

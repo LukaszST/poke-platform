@@ -14,7 +14,8 @@ class OpenTradeWizard extends Component
     public ?string $img = null;
 
     public string $card;
-    public function render()
+
+    public function mount()
     {
         $userId = auth()->getUser()->getQueueableId();
 
@@ -32,17 +33,18 @@ class OpenTradeWizard extends Component
 
         $this->cards = $cardList;
 
+    }
+    public function render()
+    {
         return view('livewire.open-trade-wizard');
     }
 
     public function updatedCard($value)
     {
-        $userId = auth()->getUser()->getQueueableId();
-
-        $cards = DB::table('user_card_collections')->where(['user_id' => $userId])->where('id', '=', $value)->get(['id', 'card_id']);
+        $cards = DB::table('user_card_collections')->where('id', '=', $value)->first(['card_id']);
 
         /** @var Card $cardInfo */
-        $cardInfo = Pokemon::Card()->find($value);
+        $cardInfo = Pokemon::Card()->find($cards->card_id);
 
         $this->img = $cardInfo->getImages()->getSmall();
     }
