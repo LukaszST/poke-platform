@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 use Pokemon\Models\Card;
 use Pokemon\Models\Set;
@@ -21,20 +22,21 @@ class OpenTradeWizard extends Component
 
     public string $set;
 
+    public string $userId;
     public ?array $wantedCardsSelect = null;
     public string $wantedCard;
 
     public function mount()
     {
-        $userId = auth()->getUser()->getQueueableId();
+        $this->userId = auth()->getUser()->getQueueableId();
 
-        $cards = DB::table('user_card_collections')->where(['user_id' => $userId])->get(['id', 'card_id']);
+        $cards = DB::table('user_card_collections')->where(['user_id' => $this->userId])->get(['id', 'card_id']);
 
         $cardList = [];
         foreach ($cards as $card) {
             /** @var Card $pokemonData */
             $pokemonData = Pokemon::Card()->find($card->card_id);
-            $cardList[$card->id] = $this->prepareCardForSelect($pokemonData);
+            $cardList[$card->card_id] = $this->prepareCardForSelect($pokemonData);
         }
 
         $pokemonSets = Pokemon::Set()->all();
@@ -55,10 +57,8 @@ class OpenTradeWizard extends Component
 
     public function updatedCard($value)
     {
-        $cards = DB::table('user_card_collections')->where('id', '=', $value)->first(['card_id']);
-
         /** @var Card $cardInfo */
-        $cardInfo = Pokemon::Card()->find($cards->card_id);
+        $cardInfo = Pokemon::Card()->find($value);
 
         $this->img = $cardInfo->getImages()->getSmall();
     }
@@ -91,5 +91,24 @@ class OpenTradeWizard extends Component
         $set = $card->getSet()->getName();
 
         return sprintf('%s, number: %s, set: %s', $name, $number, $set);
+    }
+
+    public function saveTrade()
+    {
+        DB::table('cards_trade_market')->insert([
+            'card_id_for_trade' => $this->card,
+            'trade_owner' => $this->userId,
+            'wanted_card_id' => $this->wantedCard,
+            'active' => 1,
+            "created_at" => now(),
+            "updated_at" => now()
+        ]);
+
+        return Redirect::to('/trade');
+    }
+
+    public function cancel()
+    {
+        return Redirect::to('/trade');
     }
 }
