@@ -70,7 +70,7 @@
                         </div>
                     </a>
                 </div>
-                <a href="/prices/{{$card->getId()}}">Check prices for {{$card->getName()}}</a>
+                <a href="/prices/{{$card->getId()}}" wire:navigate>Check prices for {{$card->getName()}}</a>
             </div>
         @endforeach
     </div>
