@@ -20,4 +20,14 @@ class TradeCard extends Controller
     {
         return view('AddOpenTrade');
     }
+
+    public function bidTrade(int $tradeId)
+    {
+        return view('BidTrade');
+    }
+
+    public function listBidsForTrade(int $tradeId)
+    {
+        return view('ListBidsTrade');
+    }
 }

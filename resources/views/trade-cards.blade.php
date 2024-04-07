@@ -81,6 +81,12 @@
                 <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                     <p class="text-sm leading-6 text-gray-900">{{$openTrade->short_note}}</p>
                     {{--            <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p>--}}
+
+                    <a href="/trade/bid/{{$openTrade->id}}" wire:navigate>
+                        <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            Bid this trade
+                        </button>
+                    </a>
                 </div>
             </li>
         @endforeach

@@ -46,5 +46,7 @@ Route::get('/card/{pokemonName}', [GetAllCardsFromAllSetsForPokemon::class, 'get
 
 Route::get('/trade', [TradeCard::class, 'listCardsOpenForTrade'])->name('trade');
 Route::get('/trade/new', [TradeCard::class, 'addTOpenTrade']);
+Route::get('/trade/bid/{id}', [TradeCard::class, 'bidTrade']);
+Route::get('/trade/{id}', [TradeCard::class, 'listBidsForTrade']);
 
 require __DIR__.'/auth.php';
