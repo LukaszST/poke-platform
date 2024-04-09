@@ -19,7 +19,7 @@
 <livewire:navbar></livewire:navbar>
 
 <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
-
+    <livewire:open-trade-wizard></livewire:open-trade-wizard>
 </div>
 </body>
 </html>
