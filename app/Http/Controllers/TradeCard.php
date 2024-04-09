@@ -23,11 +23,11 @@ class TradeCard extends Controller
 
     public function bidTrade(int $tradeId)
     {
-        return view('BidTrade');
+        return view('BidTrade', ['tradeId' => $tradeId]);
     }
 
     public function listBidsForTrade(int $tradeId)
     {
-        return view('ListBidsTrade');
+        return view('ListBidsTrade', ['tradeId' => $tradeId]);
     }
 }

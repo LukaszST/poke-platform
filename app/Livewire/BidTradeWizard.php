@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
@@ -14,7 +15,12 @@ class BidTradeWizard extends Component
 
     public string $card;
 
+    public int $tradeId;
+
     public ?string $img = null;
+
+    public string $userId;
+
     public function mount()
     {
         $this->userId = auth()->getUser()->getQueueableId();
@@ -27,8 +33,6 @@ class BidTradeWizard extends Component
             $pokemonData = Pokemon::Card()->find($card->card_id);
             $cardList[$card->card_id] = $this->prepareCardForSelect($pokemonData);
         }
-
-        dd($cardList);
 
         $this->cards = $cardList;
 
@@ -49,21 +53,20 @@ class BidTradeWizard extends Component
 
     public function saveTrade()
     {
-        DB::table('cards_bids_trade')->insert([
-            'trade_id' => $this->card,
-            'trade_owner' => $this->userId,
-            'wanted_card_id' => $this->wantedCard,
-            'active' => 1,
+        DB::table('card_bids_trade')->insert([
+            'trade_id' => $this->tradeId,
+            'bid_owner' => $this->userId,
+            'short_note' => $this->card,
             "created_at" => now(),
             "updated_at" => now()
         ]);
 
-        return Redirect::to('/trade');
+        return Redirect::to('/trade/' . $this->tradeId);
     }
 
     public function cancel()
     {
-        return Redirect::to('/trade');
+        return Redirect::to('/trade/' . $this->tradeId);
     }
 
     private function prepareCardForSelect(Card $card): string
