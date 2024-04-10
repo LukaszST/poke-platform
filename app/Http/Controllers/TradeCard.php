@@ -28,6 +28,8 @@ class TradeCard extends Controller
 
     public function listBidsForTrade(int $tradeId)
     {
-        return view('ListBidsTrade', ['tradeId' => $tradeId]);
+        $bids = DB::table('card_bids_trade')->where('trade_id', '=', $tradeId)->get()->all();
+
+        return view('ListBidsTrade', ['tradeId' => $tradeId, 'bids' => $bids]);
     }
 }
