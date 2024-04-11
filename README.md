@@ -35,9 +35,9 @@ vendor/bin/sail up -d
     - [x] Add information about set to easier search
   - [x] Storing data for sets
 - [x] Saving images from API
-- [ ] Trade card with other with secure approve
+- [x] Trade card with other with secure approve
 - [x] Showing historical prices for cards
-- [ ] Add card info (name, set, picture) on the price chart view
+- [x] Add card info (name, set, picture) on the price chart view
  
 ## #100commitow
 

@@ -22,6 +22,8 @@
 <livewire:navbar></livewire:navbar>
 
 <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+    <h1 class="text-center">Card Price for {{ $cardData->getName() }}</h1>
+
     <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
             <div class="rounded overflow-hidden shadow-lg">
                 <a href="#"></a>
@@ -45,7 +47,7 @@
                         <div
                             class="text-sm absolute top-0 right-0 bg-indigo-600 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
                             <span class="font-bold">{{$cardData->getCardmarket()->getPrices()->getTrendPrice()}}</span>
-                            <small>CM Trend Price</small>
+                            <small>Trend Price</small>
                         </div>
                     </a>
                 </div>
@@ -53,11 +55,16 @@
     </div>
 </div>
 
-
-<h1>Card Price for {{ $cardData->getName() }}</h1>
+<h2 class="text-center">Average Sell Price</h2>
 <canvas id="myChartAvgSellPrice" height="50px"></canvas>
+
+<h2 class="text-center">Low Price</h2>
 <canvas id="myChartLowPrice" height="50px"></canvas>
+
+<h2 class="text-center">Trend Price</h2>
 <canvas id="myChartTrendPrice" height="50px"></canvas>
+
+<h2 class="text-center">Suggested Price</h2>
 <canvas id="myChartSuggestedPrice" height="50px"></canvas>
 </body>
 

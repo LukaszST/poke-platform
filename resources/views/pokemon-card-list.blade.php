@@ -66,11 +66,11 @@
                         <div
                             class="text-sm absolute top-0 right-0 bg-indigo-600 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
                             <span class="font-bold">{{$card->getCardmarket()->getPrices()->getTrendPrice()}}</span>
-                            <small>CM Trend Price</small>
+                            <small>Trend Price</small>
                         </div>
                     </a>
                 </div>
-                <a href="/prices/{{$card->getId()}}" wire:navigate>Check prices for {{$card->getName()}}</a>
+                <a href="/prices/{{$card->getId()}}">Check prices for {{$card->getName()}}</a>
             </div>
         @endforeach
     </div>
