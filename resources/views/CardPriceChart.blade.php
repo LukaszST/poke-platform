@@ -67,7 +67,6 @@
 <h2 class="text-center">Suggested Price</h2>
 <canvas id="myChartSuggestedPrice" height="50px"></canvas>
 </body>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -162,6 +161,5 @@
         document.getElementById('myChartSuggestedPrice'),
         configSuggestedPrice
     );
-
 </script>
 </html>
