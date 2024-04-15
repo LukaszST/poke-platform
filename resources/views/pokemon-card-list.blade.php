@@ -27,7 +27,7 @@
                 <div class="relative">
                     <a href="#">
 
-                        @if(asset('cards/' . $card->getId() . '.png'))
+                        @if(file_exists(public_path('cards/' . $card->getId() . '.png')))
                             <img class="w-full"
                                  src="{{asset('cards/' . $card->getId() . '.png')}}"
                                  alt="">
