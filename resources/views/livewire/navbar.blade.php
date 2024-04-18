@@ -32,7 +32,7 @@
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <a href="{{url('/sets')}}" wire:navigate class="{{request()->is('sets') ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}}">Sets</a>
-                        <a href="{{url('/my-collections')}}" wire:navigate class="{{request()->is('my-collections') ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}}">My collections</a>
+                        <a href="{{url('/my-collections')}}" class="{{request()->is('my-collections') ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}}">My collections</a>
                         <a href="{{url('/trade')}}" wire:navigate class="{{request()->is('trade') ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}}">Trade</a>
 
                     </div>
