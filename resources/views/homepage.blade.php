@@ -30,7 +30,7 @@
     <div class="bg-white">
 
 
-        <div class="relative px-60 pt-14 lg:px-8">
+        <div class="relative px-10 pt-14 lg:px-8">
 
 
 
