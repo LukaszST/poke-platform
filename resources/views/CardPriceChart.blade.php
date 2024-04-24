@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    {{--    TODO extend main template--}}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <title>Poke Platform - Card prices for {{ $cardData->getName() }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
-
-    <!-- Styles -->
-    {{--    TODO install from npm--}}
-    <script src="https://cdn.tailwindcss.com"></script>
-
-
-</head>
-
-<body>
-<livewire:navbar></livewire:navbar>
-
+@section('content')
 <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
     <h1 class="text-center">Card Price for {{ $cardData->getName() }}</h1>
 
@@ -66,7 +46,6 @@
 
 <h2 class="text-center">Suggested Price</h2>
 <canvas id="myChartSuggestedPrice" height="50px"></canvas>
-</body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -162,4 +141,4 @@
         configSuggestedPrice
     );
 </script>
-</html>
+@endsection
