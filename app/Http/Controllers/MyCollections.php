@@ -9,7 +9,7 @@ class MyCollections extends Controller
 {
     public function getMyCardCollection()
     {
-        $userId = auth()->getUser()->getQueueableId();
+        $userId = auth()->user()->getAuthIdentifier();
 
         $cards = DB::table('user_card_collections')->where(['user_id' => $userId])->get(['id', 'card_id']);
 

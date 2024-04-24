@@ -23,7 +23,7 @@ class BidTradeWizard extends Component
 
     public function mount()
     {
-        $this->userId = auth()->getUser()->getQueueableId();
+        $this->userId = auth()->user()->getAuthIdentifier();
 
         $cards = DB::table('user_card_collections')->where(['user_id' => $this->userId])->get(['id', 'card_id']);
 
